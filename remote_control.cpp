@@ -16,7 +16,6 @@ RemoteControl::RemoteControl(unsigned int __receiverPin)
 
 void RemoteControl::setup(void)
 {
-    Serial.begin(this->SERIAL_BAUD_RATE);
     this->infraredReceiver->enableIRIn();
 }
 

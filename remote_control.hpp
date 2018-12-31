@@ -11,7 +11,7 @@
 
 #include <IRremote.h>
 
-enum class RemoteControlButton: unsigned long
+enum class RemoteControlButton : unsigned long
 {
   NONE = 0x0,
   OK = 0xFF02FD,
@@ -26,7 +26,6 @@ enum class RemoteControlButton: unsigned long
 class RemoteControl
 {
 private:
-  const static unsigned int SERIAL_BAUD_RATE = 9600;
   RemoteControlButton pressedButton;
   IRrecv *infraredReceiver;
 
