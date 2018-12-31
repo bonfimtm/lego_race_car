@@ -9,13 +9,11 @@
 #include "powertrain.hpp"
 
 Powertrain::Powertrain(
-    unsigned int __pwmStep,
     unsigned int __pwmPin,
     unsigned int __dirPinA,
     unsigned int __dirPinB,
     RemoteControl *__remoteControl)
 {
-    this->pwmStep = __pwmStep;
     this->pwmPin = __pwmPin;
     this->dirPinA = __dirPinA;
     this->dirPinB = __dirPinB;

@@ -20,7 +20,6 @@ enum class DrivingDirection
 class Powertrain
 {
 private:
-  unsigned int pwmStep;
   unsigned int pwmPin;
   unsigned int dirPinA;
   unsigned int dirPinB;
@@ -30,7 +29,6 @@ private:
 
 public:
   Powertrain(
-      unsigned int __pwmStep,
       unsigned int __pwmPin,
       unsigned int __dirPinA,
       unsigned int __dirPinB,

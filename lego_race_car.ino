@@ -13,7 +13,7 @@
 #define SERIAL_BAUD_RATE 9600
 
 RemoteControl remoteControl(A0);
-Powertrain powertrain(10, 9, 8, 7, &remoteControl);
+Powertrain powertrain(9, 8, 7, &remoteControl);
 Steering steering(6, 5, 4, &remoteControl);
 
 // The setup function runs once when you press reset or power the board
