@@ -32,6 +32,10 @@ void RemoteControl::loop(void)
         // Receive the next value
         this->infraredReceiver->resume();
     }
+    else
+    {
+        this->pressedButton = RemoteControlButton::NONE;
+    }
 }
 
 RemoteControlButton RemoteControl::getPressedButton(void) const
