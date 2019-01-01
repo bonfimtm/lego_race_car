@@ -24,8 +24,8 @@ private:
   const static int ANGLE_CENTER = 0;
   const static int ANGLE_RIGHT_MAX = 90;
 
-  const static int ANGLE_LEFT_MECH_MAX = -45;
-  const static int ANGLE_RIGHT_MECH_MAX = 45;
+  const static int ANGLE_LEFT_MECH_MAX = -60;
+  const static int ANGLE_RIGHT_MECH_MAX = 60;
 
   const static unsigned int ANGLE_RAW_MIN = 0;
   const static unsigned int ANGLE_RAW_MAX = 255;
