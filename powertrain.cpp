@@ -18,7 +18,7 @@ Powertrain::Powertrain(
     this->dirPinA = __dirPinA;
     this->dirPinB = __dirPinB;
     this->remoteControl = __remoteControl;
-    this->motorPower = 0;
+    this->motorPower = Powertrain::MOTOR_POWER_MIN;
     this->direction = DrivingDirection::FORWARD;
 }
 
@@ -48,11 +48,11 @@ void Powertrain::loop(void)
     }
     else if (RemoteControlButton::UP == this->remoteControl->getPressedButton())
     {
-        this->motorPower = 255;
+        this->motorPower = Powertrain::MOTOR_POWER_MAX;
     }
     else if (RemoteControlButton::DOWN == this->remoteControl->getPressedButton())
     {
-        this->motorPower = 0;
+        this->motorPower = Powertrain::MOTOR_POWER_MIN;
     }
 
     if (DrivingDirection::REVERSE == this->direction)

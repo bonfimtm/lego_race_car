@@ -26,6 +26,8 @@ private:
   RemoteControl *remoteControl;
   unsigned int motorPower;
   DrivingDirection direction;
+  const static unsigned int MOTOR_POWER_MIN = 0;
+  const static unsigned int MOTOR_POWER_MAX = 255;
 
 public:
   Powertrain(

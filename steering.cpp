@@ -18,7 +18,7 @@ Steering::Steering(
     this->dirPinA = __dirPinA;
     this->dirPinB = __dirPinB;
     this->remoteControl = __remoteControl;
-    this->angleRaw = 0;
+    this->angleRaw = Steering::ANGLE_RAW_MIN;
 }
 
 void Steering::setup(void)
@@ -29,7 +29,7 @@ void Steering::setup(void)
 
     digitalWrite(this->dirPinA, LOW);
     digitalWrite(this->dirPinB, HIGH);
-    
+
     analogWrite(this->pwmPin, this->angleRaw);
 }
 
@@ -37,16 +37,16 @@ void Steering::loop(void)
 {
     if (RemoteControlButton::OK == this->remoteControl->getPressedButton())
     {
-        this->setAngle(0);
+        this->setAngle(Steering::ANGLE_CENTER);
     }
     else if (RemoteControlButton::LEFT == this->remoteControl->getPressedButton())
     {
-        this->setAngle(-45);
+        this->setAngle(Steering::ANGLE_LEFT_MECH_MAX);
     }
 
     else if (RemoteControlButton::RIGHT == this->remoteControl->getPressedButton())
     {
-        this->setAngle(45);
+        this->setAngle(Steering::ANGLE_RIGHT_MECH_MAX);
     }
 
     analogWrite(this->pwmPin, this->angleRaw);
@@ -54,13 +54,12 @@ void Steering::loop(void)
 
 void Steering::setAngle(int angle)
 {
-
-    if (angle < -90 || angle > 90)
+    if (angle < Steering::ANGLE_LEFT_MAX || angle > Steering::ANGLE_RIGHT_MAX)
     {
         return;
     }
 
-    if (angle > 0)
+    if (angle > Steering::ANGLE_CENTER)
     {
         // Right
         digitalWrite(this->dirPinA, HIGH);
@@ -73,5 +72,5 @@ void Steering::setAngle(int angle)
         digitalWrite(this->dirPinB, HIGH);
     }
 
-    this->angleRaw = (int)(abs(angle) / 90.0 * 255);
+    this->angleRaw = (int)(abs(angle) / (float)Steering::ANGLE_RIGHT_MAX * Steering::ANGLE_RAW_MAX);
 }
