@@ -22,14 +22,18 @@ void RemoteControl::setup(void)
 void RemoteControl::loop(void)
 {
     decode_results results;
+
     if (this->infraredReceiver->decode(&results))
     {
         this->pressedButton = (RemoteControlButton)results.value;
 
-        // Send pressed button
-        Serial.println(results.value, HEX);
+        if ((unsigned long) RemoteControlButton::REPEATED != results.value)
+        {
+            Serial.println();
+            Serial.print("Received remote control button: ");
+            Serial.println(results.value, HEX);
+        }
 
-        // Receive the next value
         this->infraredReceiver->resume();
     }
     else

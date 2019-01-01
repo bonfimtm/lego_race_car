@@ -21,6 +21,7 @@ enum class RemoteControlButton : unsigned long
   DOWN = 0xFFA857,
   ONE = 0xFF6897,
   TWO = 0xFF9867,
+  REPEATED = 0xFFFFFFFF,
 };
 
 class RemoteControl
