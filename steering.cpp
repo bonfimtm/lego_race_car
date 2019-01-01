@@ -54,6 +54,11 @@ void Steering::loop(void)
 
 void Steering::setAngle(int angle)
 {
+    Serial.println();
+    Serial.print("Setting steering angle to ");
+    Serial.print(angle);
+    Serial.print(" deg");
+
     if (angle < Steering::ANGLE_LEFT_MAX || angle > Steering::ANGLE_RIGHT_MAX)
     {
         return;
@@ -73,4 +78,8 @@ void Steering::setAngle(int angle)
     }
 
     this->angleRaw = (int)(abs(angle) / (float)Steering::ANGLE_RIGHT_MAX * Steering::ANGLE_RAW_MAX);
+
+    Serial.print(" (");
+    Serial.print(this->angleRaw);
+    Serial.println(")");
 }
